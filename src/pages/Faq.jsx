@@ -9,7 +9,7 @@ export default function Faq() {
   <section className="hero-section">
   <div className="content banner">
     <h1>FAQ’s</h1>
-<p><a className="head-content" href="index.html">Home </a>FAQ’s</p>
+    <p><a className="head-content" href="index.html">Home </a>FAQ’s</p>
   </div>
 </section>
     <div className="container mt-5 soft-78 ak870">

@@ -1,8 +1,23 @@
-import React from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "../store";
 import Header from './others/Header';
 import Footer from './others/Footer';
+import { getHomeContent } from '../store/action/HomeAction';
 
-export default function HomeAA() {
+export default function Home() {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+    setIsLoading(true);
+    dispatch(
+      getHomeContent()
+    ).then(() => setIsLoading(false));
+  }, []);
+  
+  const homeContent = useSelector(
+    (state) => state?.getHomeContent?.HomeResponse?.data
+  )
+  console.log("render home page", homeContent);
       return (
         <>
           <Header />

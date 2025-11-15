@@ -2,6 +2,8 @@ import React, { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import store from './store/index.js';
 const AboutUs = lazy(() => import('./pages/AboutUs.jsx'));
 const Artical = lazy(() => import('./pages/Artical.jsx'));
 const BookDemo = lazy(() => import('./pages/BookDemo.jsx'));
@@ -20,8 +22,10 @@ const SoftwareFeatures = lazy(() => import('./pages/SoftwareFeatures.jsx'));
 const StudioOrAcademy = lazy(() => import('./pages/StudioOrAcademy.jsx'));
 const TermCondition = lazy(() => import('./pages/TermCondition.jsx'));
 
+
 function App() {
   return (
+    <Provider store={store}>
     <BrowserRouter>
       <Suspense fallback={<div>Loading…</div>}>
         <Routes>
@@ -63,6 +67,7 @@ function App() {
         </Routes>
       </Suspense>
     </BrowserRouter>
+    </Provider>
   );
 }
 
