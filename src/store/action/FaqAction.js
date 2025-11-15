@@ -1,12 +1,12 @@
 import {http, queryBuilder }from "../http";
 import {
   API_ENDPOINT,
-  GET_HOME_API,
-  GET_HOME_SUCCESS,
-  GET_HOME_ERROR
+  GET_FAQ_API,
+  GET_FAQ_SUCCESS,
+  GET_FAQ_ERROR
 } from "../constants";
-console.log("API_ENDPOINT", API_ENDPOINT);
-const getHomeContent = (page = 0, limit = 50, search = null, order = null, sort = null) => ( dispatch  ) => {
+
+const getFaqContent = (page = 0, limit = 50, search = null, order = null, sort = null) => ( dispatch  ) => {
   const query = queryBuilder({
     page,
     limit,
@@ -14,16 +14,16 @@ const getHomeContent = (page = 0, limit = 50, search = null, order = null, sort 
     order,
     sort
   });
-  return http.get(`${API_ENDPOINT}${GET_HOME_API}${query ? `?${query}` : ``}`)
+  return http.get(`${API_ENDPOINT}${GET_FAQ_API}${query ? `?${query}` : ``}`)
     .then((res) => {
       if (res.data.success) {
         dispatch({
-          type: GET_HOME_SUCCESS,
+          type: GET_FAQ_SUCCESS,
           payload: res.data,
         });
       } else {
         dispatch({
-          type: GET_HOME_ERROR,
+          type: GET_FAQ_ERROR,
           payload: res.data,
         });
       }
@@ -33,4 +33,4 @@ const getHomeContent = (page = 0, limit = 50, search = null, order = null, sort 
 }
 
 
-export { getHomeContent }
+export { getFaqContent }

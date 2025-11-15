@@ -1,49 +1,76 @@
-import React from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "../store";
+
 import Header from './others/Header';
 import Footer from './others/Footer';
+import { getFaqContent } from '../store/action/FaqAction';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function Faq() {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+    setIsLoading(true);
+    dispatch(
+      getFaqContent()
+    ).then(() => setIsLoading(false));
+  }, []);
+  
+  const faqContent = useSelector(
+    (state) => state?.getFaqContent?.FaqResponse?.data
+  )
+    const {
+      page,
+      tabs
+    } = faqContent ||{};
+    console.log("faqContent", faqContent);
       return (
         <> 
 <Header />
-  <section className="hero-section">
+  <section className="hero-section" style={{
+        backgroundImage: `url(${page?.banner_img}) center/cover no-repeat;`,
+        padding: '100px 0',
+        backgroundPosition: 'center',
+        textAlign: 'center',
+        position: 'relative',
+      }}>
   <div className="content banner">
-    <h1>FAQ’s</h1>
-    <p><a className="head-content" href="index.html">Home </a>FAQ’s</p>
+    <h1>{page?.title}</h1>
+    <p><a className="head-content" href="/">Home </a>FAQ’s</p>
   </div>
 </section>
     <div className="container mt-5 soft-78 ak870">
     <div className="mx-auto">
-      <h2 className="mt-3 yas-67">Your Questions, <span className="yoga-09">Our Expert Answers</span></h2>
+      <h2 className="mt-3 yas-67">{page?.description?.split(',')[0]}, <span className="yoga-09">{page?.description?.split(',')[1]}</span></h2>
       <ul className="nav nav-tabs justify-content-center mb-3 faq-6780" id="myTab" role="tablist">
+        {(tabs?.length > 0) && tabs.map((tab, index) => (
         <li className="nav-item" role="presentation">
-          <button className="nav-link active" id="individual-tab" data-bs-toggle="tab" data-bs-target="#individual" type="button" role="tab">About YUJAYA</button>
+          <button className={`nav-link ${index===0 ? 'active':''}`} id={`individual${tab?.tab_name?.split(' ')[0]}-tab`} data-bs-toggle="tab" data-bs-target={`#${tab?.tab_name?.split(' ')[0]}`} type="button" role="tab">{tab.tab_name}</button>
         </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="studio-tab" data-bs-toggle="tab" data-bs-target="#studio" type="button" role="tab">Services & Programs</button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="studio-tab" data-bs-toggle="tab" data-bs-target="#studio1" type="button" role="tab">Pricing & Payments</button>
-        </li>
+        ))}
       </ul>
 
       <div className="tab-content tab-450">
-        <div className="tab-pane fade show active" id="individual" role="tabpanel">
+      {(tabs?.length > 0) && tabs.map((tab, outerIndex) => (
+      <div className={`tab-pane fade ${outerIndex===0 ? 'show active ':''}`} id={`${tab?.tab_name?.split(' ')[0]}`} role="tabpanel" key={outerIndex}>
           <div className="accordion mt-4" id="faqAccordion">
+          {(tab?.faqs?.length > 0) && tab?.faqs?.map((faq, innerIndex) => (
           <div className="accordion-item mb-2 border-0 rounded-3 shadow-sm">
             <h2 className="accordion-header" id="faq2">
-              <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-                What is YUJAYA?
+              <button className={`accordion-button ${innerIndex != 0 ? 'collapsed': ''}`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${innerIndex}`}>
+                {faq?.question}
               </button>
             </h2>
-            <div id="collapse2" className="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div id={`collapse${innerIndex}`} className={`accordion-collapse collapse ${innerIndex===0 ? 'show ':''}`} data-bs-parent="#faqAccordion">
               <div className="accordion-body">
-                YUJAYA is designed for independent yoga teachers, boutique studios, and larger academies. Whether you run a single class or manage multiple locations, YUJAYA can be tailored to your needs.
+                {faq?.answer}
               </div>
             </div>
           </div>
-
-          <div className="accordion-item mb-2 border-0 rounded-3 shadow-sm">
+          ))}
+          {/* <div className="accordion-item mb-2 border-0 rounded-3 shadow-sm">
             <h2 className="accordion-header" id="faq3">
               <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
                Who can use YUJAYA?
@@ -54,11 +81,11 @@ export default function Faq() {
                 YUJAYA is designed for independent yoga teachers, boutique studios, and larger academies. Whether you run a single class or manage multiple locations, YUJAYA can be tailored to your needs.
               </div>
             </div>
-          </div>
+          </div> */}
 
 
 
-          <div className="accordion-item border-0 rounded-3 shadow-sm">
+          {/* <div className="accordion-item border-0 rounded-3 shadow-sm">
   <h2 className="accordion-header" id="faq4">
     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
       Do I need technical knowledge to use YUJAYA?
@@ -136,42 +163,39 @@ export default function Faq() {
   </div>
 </div>
 
-<div className="accordion-item border-0 rounded-3 shadow-sm">
-  <h2 className="accordion-header" id="faq10">
-    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10">
-      Can I cancel my subscription anytime?
-    </button>
-  </h2>
-  <div id="collapse10" className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-    <div className="accordion-body">
-      Yes, you can cancel or pause your subscription at any time from your account settings.
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-        </div>  
+    <div className="accordion-item border-0 rounded-3 shadow-sm">
+      <h2 className="accordion-header" id="faq10">
+        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10">
+          Can I cancel my subscription anytime?
+        </button>
+      </h2>
+      <div id="collapse10" className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+        <div className="accordion-body">
+          Yes, you can cancel or pause your subscription at any time from your account settings.
         </div>
+      </div>
+    </div> */}
 
+
+
+
+
+
+  </div>  
+      
+      </div>
+))}
       <div className="tab-pane fade slider-12" id="studio" role="tabpanel">
          Tab2
-       </div>
+      </div>
 
-        <div className="tab-pane fade" id="studio1" role="tabpanel">
+      <div className="tab-pane fade" id="studio1" role="tabpanel">
           <p>Tab3</p>
-        </div>
       </div>
     </div>
   </div>
-
-
+</div>
 <Footer />
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         </>
       );
     }
