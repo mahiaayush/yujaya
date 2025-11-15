@@ -16,7 +16,7 @@ const getHomeContent = (page = 0, limit = 50, search = null, order = null, sort 
   });
   return http.get(`${API_ENDPOINT}${GET_HOME_API}${query ? `?${query}` : ``}`)
     .then((res) => {
-      debugger
+      
       if (res.data.success) {
         dispatch({
           type: GET_HOME_SUCCESS,
