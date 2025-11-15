@@ -38,7 +38,7 @@ export default function Faq() {
       }}>
   <div className="content banner">
     <h1>{page?.title}</h1>
-    <p><a className="head-content" href="/">Home </a>FAQ’s</p>
+    <p><a className="head-content" href="/">Home </a>&gt;FAQ’s</p>
   </div>
 </section>
     <div className="container mt-5 soft-78 ak870">
