@@ -131,7 +131,7 @@ const {
   customerreviewsection: reviewRaw = {},
   faqsection: faqRaw = {},
   articalsection: articleRaw = {},
-} = rawData;
+} = rawData || {};
 
 // -----------------------------------------------------------------
 // 9. Data Normalization
