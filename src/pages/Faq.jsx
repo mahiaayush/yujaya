@@ -1,8 +1,26 @@
-import React from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "../store";
+
 import Header from './others/Header';
 import Footer from './others/Footer';
+import { getFaqContent } from '../store/action/FaqAction';
 
 export default function Faq() {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+    setIsLoading(true);
+    dispatch(
+      getFaqContent()
+    ).then(() => setIsLoading(false));
+  }, []);
+  
+  const faqContent = useSelector(
+    (state) => state?.getFaqContent?.FaqResponse?.data
+  )
+  console.log("render home page", faqContent);
+
+
       return (
         <> 
 <Header />
