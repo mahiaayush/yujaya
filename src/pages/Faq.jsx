@@ -18,7 +18,7 @@ export default function Faq() {
   const faqContent = useSelector(
     (state) => state?.getFaqContent?.FaqResponse?.data
   )
-  console.log("render home page", faqContent);
+  console.log("render FAQ page", faqContent);
 
 
       return (

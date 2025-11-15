@@ -11,7 +11,7 @@ const initialState = {
 
 const getFaqReducer = (state = initialState, action ) => {
   switch (action.type) {
-    case GET_HOME_SUCCESS:
+    case GET_FAQ_SUCCESS:
       return {
         ...state,
         FaqResponse: {
@@ -20,7 +20,7 @@ const getFaqReducer = (state = initialState, action ) => {
           success: true,
         },
       };
-    case GET_HOME_ERROR:
+    case GET_FAQ_ERROR:
       return {
         ...state,
         FaqResponse: {
