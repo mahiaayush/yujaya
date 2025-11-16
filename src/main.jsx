@@ -51,6 +51,7 @@ function App() {
           <Route path='book-demo' element={<BookDemo />} />
           <Route path='case-studey-details' element={<CaseStudeyDetails />} />
           <Route path='case-study' element={<CaseStudy />} />
+          <Route path='case-study/:slug' element={<CaseStudeyDetails />} />
           <Route path='contact-us' element={<ContactUs />} />
           <Route path='disclaimer' element={<Disclaimer />} />
           <Route path='faq' element={<Faq />} />
