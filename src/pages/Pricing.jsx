@@ -4,25 +4,20 @@ import Footer from './others/Footer';
 
 export default function Pricing() {
       return (
-        
         <>
         <Header />
 
-
-
   <section className="hero-section">
-  <div className="content banner">
-    <h1>Pricing</h1>
-<p><a className="head-content" href="index.html">Home </a>Pricing</p>
-  </div>
-</section>
+    <div className="content banner">
+      <h1>Pricing</h1>
+      <p><a className="head-content" href="index.html">Home </a>Pricing</p>
+    </div>
+  </section>
 
 <section className="price-table" id="price">
 	 <div className="container">
     <h2 className="section-title">Flexible Pricing for Every Professionals, Studio &amp; Academy</h2>
-
     <div className="row g-4">
-      
       <div className="col-md-4">
         <div className="pricing-card h-100">
         	 <p>Trial Period of<br /><strong>15 Days</strong></p>
