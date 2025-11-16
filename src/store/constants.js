@@ -53,3 +53,6 @@ export const GET_ARTICLE_ERROR = "GET_ARTICLE_ERROR";
 
 
 
+export const GET_ABOUT_US_API = "web/about-us";
+export const GET_ABOUT_US_SUCCESS = "GET_ABOUT_US_SUCCESS";
+export const GET_ABOUT_US_ERROR = "GET_ABOUT_US_ERROR";

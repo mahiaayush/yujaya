@@ -4,6 +4,7 @@ import { getFaqReducer } from "./reducer/FaqReducer";
 import { getPrivacyReducer } from "./reducer/PrivacyReducer";
 import { getDisclaimerReducer, getTermCondReducer, getContactReducer, getCaseStudyReducer } from "./reducer/Reducer";
 import { getCaseStudyDetailReducer } from "./reducer/CaseStudyReducer";
+import { getAboutUsReducer } from "./reducer/AboutUs";
 
 const rootReducer = combineReducers({
   getHomeContent: getHomeReducer,
@@ -13,8 +14,8 @@ const rootReducer = combineReducers({
   getDisclaimerContent: getDisclaimerReducer,
   getContactContent: getContactReducer,
   getCaseStudyContent: getCaseStudyReducer,
-  getCaseStudyDetailContent: getCaseStudyDetailReducer
-
+  getCaseStudyDetailContent: getCaseStudyDetailReducer,
+  getAboutUsContent: getAboutUsReducer
 });
 
 export default rootReducer;
