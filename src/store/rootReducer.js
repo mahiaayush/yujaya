@@ -2,7 +2,9 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { getHomeReducer } from "./reducer/HomeReducer";
 import { getFaqReducer } from "./reducer/FaqReducer";
 import { getPrivacyReducer } from "./reducer/PrivacyReducer";
-import { getDisclaimerReducer, getTermCondReducer, getContactReducer, getCaseStudyReducer } from "./reducer/Reducer";
+import { getDisclaimerReducer, getTermCondReducer, getContactReducer, getCaseStudyReducer, 
+  getArticleReducer, getArticleDetailsReducer
+ } from "./reducer/Reducer";
 import { getCaseStudyDetailReducer } from "./reducer/CaseStudyReducer";
 import { getAboutUsReducer } from "./reducer/AboutUs";
 
@@ -15,6 +17,9 @@ const rootReducer = combineReducers({
   getContactContent: getContactReducer,
   getCaseStudyContent: getCaseStudyReducer,
   getCaseStudyDetailContent: getCaseStudyDetailReducer,
+  getArticleContent: getArticleReducer,
+  getArticleDetailContent: getArticleDetailsReducer,
+
   getAboutUsContent: getAboutUsReducer
 });
 

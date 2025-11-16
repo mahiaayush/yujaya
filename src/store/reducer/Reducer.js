@@ -14,7 +14,10 @@ import {
   GET_CASE_STUDY_ERROR,
 
   GET_ARTICLE_SUCCESS,
-  GET_ARTICLE_ERROR
+  GET_ARTICLE_ERROR,
+
+  GET_ARTICLE_DETAILS_SUCCESS,
+  GET_ARTICLE_DETAILS_ERROR,
 } from "../constants";
 
 const initialState = {
@@ -170,7 +173,38 @@ const getArticleReducer = (state = articleState, action ) => {
       return state;
   }
 };
+const initState = {
+  Response: {
+    data: {},
+  }
+};
+
+const getArticleDetailsReducer = (state = initState, action ) => {
+  switch (action.type) {
+    case GET_ARTICLE_DETAILS_SUCCESS:
+      return {
+        ...state,
+        Response: {
+          ...state.Response,
+          data: action.payload.data,
+          success: true,
+        },
+      };
+    case GET_ARTICLE_DETAILS_ERROR:
+      return {
+        ...state,
+        Response: {
+          ...state.Response,
+          data: { rows: [] },
+          success: false,
+        },  
+      };
+    default:
+      return state;
+  }
+};
 export { getTermCondReducer, getDisclaimerReducer, getContactReducer,
   getCaseStudyReducer,
-  getArticleReducer
+  getArticleReducer,
+  getArticleDetailsReducer
 };

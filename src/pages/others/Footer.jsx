@@ -41,7 +41,7 @@ export default function Footer() {
                 <li><a href="/term-condition" className="text-white text-decoration-none">T & C</a></li>
                 <li><a href="/privacy-policy" className="text-white text-decoration-none">Privacy</a></li>
                 <li><a href="/faq" className="text-white text-decoration-none">FAQs</a></li>
-                <li><a href="/artical" className="text-white text-decoration-none">Articles</a></li>
+                <li><a href="/article" className="text-white text-decoration-none">Articles</a></li>
                 <li><a href="/disclaimer" className="text-white text-decoration-none">Disclaimer</a></li>
                 </ul>
             </div>

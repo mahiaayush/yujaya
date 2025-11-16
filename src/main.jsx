@@ -5,7 +5,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/index.js';
 const AboutUs = lazy(() => import('./pages/AboutUs.jsx'));
-const Artical = lazy(() => import('./pages/Artical.jsx'));
+const Article = lazy(() => import('./pages/Article.jsx'));
+const ArticleDetails = lazy(() => import('./pages/ArticleDetails.jsx'));
 const BookDemo = lazy(() => import('./pages/BookDemo.jsx'));
 const CaseStudeyDetails = lazy(() => import('./pages/CaseStudeyDetails.jsx'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy.jsx'));
@@ -47,7 +48,8 @@ function App() {
           <Route path='._studio-or-academy' element={<StudioOrAcademy />} />
           <Route path='._term-condition' element={<TermCondition />} /> */}
           <Route path='about-us' element={<AboutUs />} />
-          <Route path='artical' element={<Artical />} />
+          <Route path='article' element={<Article />} />
+          <Route path='article/:slug' element={<ArticleDetails />} />
           <Route path='book-demo' element={<BookDemo />} />
           <Route path='case-studey-details' element={<CaseStudeyDetails />} />
           <Route path='case-study' element={<CaseStudy />} />

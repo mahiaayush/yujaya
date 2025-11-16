@@ -23,8 +23,9 @@ import {
 
   GET_ARTICLE_API,
   GET_ARTICLE_SUCCESS,
-  GET_ARTICLE_ERROR
+  GET_ARTICLE_ERROR,
 
+  
 } from "../constants";
 
 const getContent = (apiEndPoint, SUCESS, FAILED) => ( dispatch  ) => {
@@ -64,10 +65,16 @@ const getCaseStudyContent = () => ( dispatch  ) => {
 const getArticleContent = () => ( dispatch  ) => {
   return getContent(GET_ARTICLE_API, GET_ARTICLE_SUCCESS, GET_ARTICLE_ERROR)(dispatch);
 }
+
+const getArticleDetailContent = () => ( dispatch  ) => {
+  return getContent(GET_ARTICLE_DETAILS_API, GET_ARTICLE_DETAILS_SUCCESS, GET_ARTICLE_DETAILS_ERROR)(dispatch);
+}
+
 export { 
   getTermCondContent,
   getDisclaimerContent,
   getContactContent,
   getCaseStudyContent,
-  getArticleContent
+  getArticleContent,
+  
  }

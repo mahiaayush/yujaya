@@ -38,6 +38,10 @@ export const GET_ARTICLE_API = "web/article";
 export const GET_ARTICLE_SUCCESS = "GET_ARTICLE_SUCCESS";
 export const GET_ARTICLE_ERROR = "GET_ARTICLE_ERROR";
 
+export const GET_ARTICLE_DETAILS_API = "web/article-detail";
+export const GET_ARTICLE_DETAILS_SUCCESS = "GET_ARTICLE_DETAILS_SUCCESS";
+export const GET_ARTICLE_DETAILS_ERROR = "GET_ARTICLE_DETAILS_ERROR";
+
 
 //article
 //Articles
