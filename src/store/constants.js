@@ -15,3 +15,6 @@ export const GET_PRIVACY_SUCCESS = "GET_PRIVACY_SUCCESS";
 export const GET_PRIVACY_ERROR = "GET_PRIVACY_ERROR";
 
 
+export const GET_ABOUT_US_API = "web/about-us";
+export const GET_ABOUT_US_SUCCESS = "GET_ABOUT_US_SUCCESS";
+export const GET_ABOUT_US_ERROR = "GET_ABOUT_US_ERROR";

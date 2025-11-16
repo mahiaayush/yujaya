@@ -525,19 +525,19 @@ p.text-center.text-muted {
 }
 
 /* Image sizes by grid spans */
-.img-one {
+.img-1 {
   grid-row: span 2;   /* tall image */
 }
 
-.img-two {
+.img-2 {
   grid-row: span 1;   /* normal image */
 }
 
-.img-three {
+.img-3 {
   grid-row: span 1;   /* normal image */
 }
 
-.img-four {
+.img-4 {
   grid-row: span 2;   /* tall image */
 }
 

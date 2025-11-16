@@ -7,8 +7,8 @@ import { getPrivacyReducer } from "./reducer/PrivacyReducer";
 const rootReducer = combineReducers({
   getHomeContent: getHomeReducer,
   getFaqContent: getFaqReducer,
-  getPrivacyContent: getPrivacyReducer
-
+  getPrivacyContent: getPrivacyReducer,
+  getAboutUsContent: getAboutUsReducer
 });
 
 export default rootReducer;
